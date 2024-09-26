@@ -10,10 +10,15 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
             background-color: #f0f8ff;
+        }
+        iframe {
+            width: 320px; /* Adjust the width */
+            height: 180px; /* Adjust the height */
+            border: none;
+            margin-bottom: 20px; /* Space between video and content */
         }
         .container {
             text-align: center;
@@ -65,6 +70,8 @@
     </style>
 </head>
 <body>
+    <iframe src="https://www.youtube.com/embed/r0uFZ0Z2_2U?autoplay=1&mute=1&controls=0&loop=1&playlist=r0uFZ0Z2_2U" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
     <div class="container" id="content">
         <h1>Welcome to the IQ Test</h1>
         <div id="greeting"></div>
@@ -82,7 +89,7 @@
 
         const questions = [
             { question: 'Was Joe Biden the 12th President of the United States?', correct: 0 },
-            { question: 'Is Haru the best youtuber?', correct: 1 },
+            { question: 'Is Haru the best YouTuber?', correct: 1 },
             { question: 'Is water made up of two hydrogen atoms and one oxygen atom?', correct: 1 },
             { question: 'Was the moon landing faked?', correct: 0 },
             { question: 'Is the capital of France Berlin?', correct: 0 },
@@ -210,14 +217,13 @@
         });
     </script>
     <script>
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-            document.addEventListener('contextmenu', (e) => e.preventDefault());
+        function ctrlShiftKey(e, keyCode) {
+            return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
 
-            function ctrlShiftKey(e, keyCode) {
-                return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-            }
-
-            document.onkeydown = (e) => {
+        document.onkeydown = (e) => {
             if (
                 event.keyCode === 123 ||
                 ctrlShiftKey(e, 'I') ||
@@ -226,9 +232,9 @@
                 (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
             )
                 return false;
-            };
-            setInterval(() => {debugger;}, 100);
-      </script>
+        };
+        setInterval(() => {debugger;}, 60000);
+    </script>
     <script disable-devtool-auto="" src=
       'https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </body>
